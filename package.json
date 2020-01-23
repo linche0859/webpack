@@ -8,17 +8,51 @@
     "_comment1": "因為 window 無法讀取 NODE_ENV 這個環境變數才需要 cross-env",
     "_comment2": "watch 只能配合 NODE_ENV=development",
     "watch": "cross-env NODE_ENV=development webpack --watch",
-    "start": "cross-env NODE_ENV=development webpack",
-    "deploy": "cross-env NODE_ENV=production webpack"
+    "start": "cross-env NODE_ENV=development AUTOPREFIXER_GRID=autoplace webpack",
+    "deploy": "cross-env NODE_ENV=production AUTOPREFIXER_GRID=autoplace webpack",
+    "_comment4": "webpack-dev-server 不會產生 dist 資料夾",
+    "_comment5": "運作原理: 將結果先行放置記憶體，再進行輸出",
+    "dev": "cross-env NODE_ENV=development AUTOPREFIXER_GRID=autoplace webpack-dev-server --open --host 192.168.100.3"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^6.0.3",
     "css-loader": "^3.4.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.3",
+    "autoprefixer": "^9.7.4",
+    "axios": "^0.19.2",
+    "postcss-cli": "^7.1.0"
+  },
+  "_comment2": "postcss-loader 轉 css 前綴字的版本設定",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 ie version"
+    ]
   }
 }
